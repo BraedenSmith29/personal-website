@@ -4,13 +4,22 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: #213547;
-  background-color: #ffffff;
+  color: #ffffff;
+  background-color: #010b14;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.fancy-name {
+  -webkit-text-fill-color: #0000;
+  background: linear-gradient(15deg, #1d93f3 10%, #f714d1 25%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-size: 500% auto;
+  font-weight: 700;
 }
 
 #app {
@@ -29,7 +38,11 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 5em;
   line-height: 1.1;
+}
+
+p {
+  font-size: 1.25em;
 }
 
