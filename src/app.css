@@ -37,13 +37,22 @@ body {
   min-height: 100vh;
 }
 
-h1 {
+.header-text {
   font-size: 5em;
   margin: 3% 0;
 }
 
-p {
+.body-text {
   font-size: 1.25em;
   margin: 3% 0;
 }
 
+@media (width < 500px) {
+  .header-text {
+    font-size: 3em;
+  }
+
+  .body-text {
+    font-size: 1em;
+  }
+}
