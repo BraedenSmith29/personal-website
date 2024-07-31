@@ -48,6 +48,13 @@ body {
 }
 
 @media (width < 500px) {
+  /* decrease the size of the flex box
+   * to improve positioning on mobile
+   */
+  body {
+    min-height: 80vh;
+  }
+  
   .header-text {
     font-size: 3em;
   }
