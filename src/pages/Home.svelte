@@ -31,27 +31,27 @@
         </div>
     </section>
 
-    <section class="about-extended">
-        <h2>My Philosophy</h2>
-        <p>
-            My guiding principle is that software is built for humans, and it should be developed with them in mind.
-            For me, good technology should never get in the way. It should stand by people and let them do what
-            they came to do, just easier.
-        </p>
-        <p>
-            The same goes for the code base, which should be designed to make iteration and impact easy.
-            I keep this in mind whenever I'm working on a system. Clean code and good collaboration
-            aren't just buzzwords to me. They really make a difference for the developer and the end user.
-        </p>
-    </section>
+<!--    <section class="about-extended">-->
+<!--        <h2>My Philosophy</h2>-->
+<!--        <p>-->
+<!--            My guiding principle is that software is built for humans, and it should be developed with them in mind.-->
+<!--            For me, good technology should never get in the way. It should stand by people and let them do what-->
+<!--            they came to do, just easier.-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            The same goes for the code base, which should be designed to make iteration and impact easy.-->
+<!--            I keep this in mind whenever I'm working on a system. Clean code and good collaboration-->
+<!--            aren't just buzzwords to me. They really make a difference for the developer and the end user.-->
+<!--        </p>-->
+<!--    </section>-->
 
-    <section class="video-resume">
-        <h2>Video Resume</h2>
-        <div class="video-placeholder">
-            <p>Video resume coming soon...</p>
-            <!-- <video controls src="/video-resume.mp4"></video> -->
-        </div>
-    </section>
+<!--    <section class="video-resume">-->
+<!--        <h2>Video Resume</h2>-->
+<!--        <div class="video-placeholder">-->
+<!--            <p>Video resume coming soon...</p>-->
+<!--            &lt;!&ndash; <video controls src="/video-resume.mp4"></video> &ndash;&gt;-->
+<!--        </div>-->
+<!--    </section>-->
 </div>
 
 <style>

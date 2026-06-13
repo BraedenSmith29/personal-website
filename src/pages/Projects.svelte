@@ -109,12 +109,7 @@
 		border-radius: 1.5rem;
 		overflow: hidden;
 		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-		transition: transform 0.3s ease;
 		border: 1px solid rgba(122, 162, 247, 0.1);
-	}
-
-	.project-card:hover {
-		transform: translateY(-5px);
 	}
 
 	.project-content {
