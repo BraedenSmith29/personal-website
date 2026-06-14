@@ -57,79 +57,54 @@
 	const WeatherIcon = $derived(getWeatherIcon(weather.condition));
 </script>
 
-<div class="weather-widget">
-	<div class="location-group">
-		<span class="location">Fort Worth, TX</span>
-		<div class="weather">
-			<WeatherIcon size={14} weight="fill" />
-			<span class="temp">{weather.temp !== null ? weather.temp + '°' : '--'}</span>
-		</div>
+<div class="status-line">
+	<span class="location">Fort Worth, TX</span>
+	<span class="separator">/</span>
+	<div class="weather">
+		<WeatherIcon size={14} weight="regular" />
+		<span class="temp">{weather.temp !== null ? weather.temp + '°' : '--'}</span>
 	</div>
-	<div class="time-box">
-		<span class="time">{formatTime(time)}</span>
-	</div>
+	<span class="separator">/</span>
+	<span class="time">{formatTime(time)}</span>
 </div>
 
 <style>
-	.weather-widget {
+	.status-line {
 		display: flex;
 		align-items: center;
-		gap: 1.25rem;
+		gap: 0.75rem;
 		font-family: var(--body-font);
-	}
-
-	.location-group {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-		gap: 0.1rem;
+		font-size: 0.85rem;
+		color: var(--muted-color);
 	}
 
 	.location {
-		font-size: 0.75rem;
-		font-weight: 600;
-		color: var(--text-color);
-		opacity: 0.7;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
+		font-weight: 500;
 	}
 
 	.weather {
 		display: flex;
 		align-items: center;
-		gap: 0.25rem;
-		font-size: 0.85rem;
-		color: var(--text-color);
+		gap: 0.35rem;
+	}
+
+	.temp {
 		font-weight: 500;
 	}
 
-	.time-box {
-		background: var(--text-color);
-		color: var(--bg-color);
-		padding: 0.4rem 0.8rem;
-		border-radius: 8px;
-		min-width: 85px;
-		text-align: center;
+	.time {
+		font-variant-numeric: tabular-nums;
+		font-weight: 500;
 	}
 
-	.time {
-		font-family: monospace;
-		font-weight: 700;
-		font-size: 0.9rem;
+	.separator {
+		opacity: 0.3;
+		font-weight: 300;
 	}
 
 	@media (max-width: 600px) {
-		.weather-widget {
-			gap: 0.75rem;
-		}
-		
-		.location-group {
-			align-items: center;
-		}
-
-		.time-box {
-			padding: 0.3rem 0.6rem;
-			min-width: 75px;
+		.status-line {
+			display: none;
 		}
 	}
 </style>

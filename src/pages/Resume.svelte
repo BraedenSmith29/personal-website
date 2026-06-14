@@ -212,7 +212,7 @@
 	}
 
 	.tag {
-		background: rgba(122, 162, 247, 0.1);
+		background: rgba(0, 0, 238, 0.05);
 		color: var(--accent-color);
 		padding: 0.4rem 0.8rem;
 		border-radius: 2rem;
@@ -227,7 +227,7 @@
 	}
 
 	.job-card {
-		border-left: 2px solid rgba(122, 162, 247, 0.2);
+		border-left: 2px solid rgba(0, 0, 0, 0.1);
 		padding-left: 2rem;
 		position: relative;
 	}
@@ -304,7 +304,8 @@
 		background: var(--card-bg);
 		padding: 2rem;
 		border-radius: 1rem;
-		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+		border: 1px solid rgba(0, 0, 0, 0.05);
 	}
 
 	.edu-header {

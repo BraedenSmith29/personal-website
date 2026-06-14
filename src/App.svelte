@@ -3,6 +3,7 @@
 	import Home from './pages/Home.svelte';
 	import Resume from './pages/Resume.svelte';
 	import Projects from './pages/Projects.svelte';
+	import ProjectDetail from './pages/ProjectDetail.svelte';
 	import { router } from './lib/router.svelte.js';
 
 	const pages = {
@@ -11,7 +12,11 @@
 		'/projects': Projects
 	};
 
-	let Page = $derived(pages[router.path] || Home);
+	let Page = $derived.by(() => {
+		if (pages[router.path]) return pages[router.path];
+		if (router.path.startsWith('/projects/')) return ProjectDetail;
+		return Home;
+	});
 
 	$inspect(router.path)
 </script>
@@ -22,11 +27,6 @@
 	<Page />
 </main>
 
-<footer>
-	<div class="container">
-		<p>&copy; 2026 Braeden Smith. Built with Svelte 5.</p>
-	</div>
-</footer>
 
 <style>
 	main {

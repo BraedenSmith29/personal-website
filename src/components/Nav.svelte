@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import WeatherWidget from './WeatherWidget.svelte';
+	import StatusLine from './StatusLine.svelte';
 	import { router, navigate } from '../lib/router.svelte.js';
 
 	let links = $state({});
@@ -78,7 +78,7 @@
 		</div>
 
 		<div class="nav-right">
-			<WeatherWidget />
+			<StatusLine />
 		</div>
 	</div>
 </nav>
@@ -86,13 +86,11 @@
 <style>
 	nav {
 		padding: 2rem 0;
-		position: sticky;
-		top: 0;
-		background: rgba(0, 0, 0, 0.85);
+		background: rgba(255, 255, 255, 0.95);
 		backdrop-filter: blur(12px);
 		-webkit-backdrop-filter: blur(12px);
 		z-index: 100;
-		border-bottom: 1px solid rgba(122, 162, 247, 0.1);
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	}
 
 	.nav-content {
@@ -128,10 +126,7 @@
 		display: flex;
 		gap: 2.5rem;
 		list-style: none;
-		background: rgba(122, 162, 247, 0.05);
-		padding: 0.5rem 1.5rem;
-		border-radius: 100px;
-		border: 1px solid rgba(122, 162, 247, 0.1);
+		padding: 0.5rem 0;
 		margin: 0;
 		position: relative;
 	}
@@ -190,6 +185,10 @@
 			flex-direction: column;
 			gap: 1.5rem;
 			text-align: center;
+		}
+
+		.nav-right {
+			display: none;
 		}
 		
 		.links {

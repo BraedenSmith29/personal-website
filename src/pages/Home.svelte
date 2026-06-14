@@ -1,27 +1,28 @@
 <script>
-    import {GithubLogo, LinkedinLogo, EnvelopeSimple} from 'phosphor-svelte';
+    import {GithubLogo, LinkedinLogo, EnvelopeSimple, ArrowRight} from 'phosphor-svelte';
     import Portrait from '../../static/portrait.png';
 </script>
 
 <div class="container">
     <section class="hero">
         <div class="hero-content">
-            <h1>Hi, I'm Braeden.</h1>
-            <p class="role">Full Stack Software Developer</p>
+            <h1>Hey, I'm Braeden 👋</h1>
+            <p class="role">Software Developer & Systems Enthusiast</p>
             <p class="bio-short">
-                Software Developer with 2+ years of experience shipping production web applications.
-                Passionate about building things users love to use.
+                I'm a software developer based in Fort Worth, Texas. I enjoy building clean, 
+                efficient applications and exploring the depths of systems programming and 
+                homelab infrastructure.
             </p>
 
             <div class="social-links">
                 <a href="https://github.com/BraedenSmith29" target="_blank" rel="noopener noreferrer">
-                    <GithubLogo size={24}/>
+                    <GithubLogo size={20}/> GitHub
                 </a>
                 <a href="https://www.linkedin.com/in/braedensmith29/" target="_blank" rel="noopener noreferrer">
-                    <LinkedinLogo size={24}/>
+                    <LinkedinLogo size={20}/> LinkedIn
                 </a>
                 <a href="mailto:braedensmith629@gmail.com">
-                    <EnvelopeSimple size={24}/>
+                    <EnvelopeSimple size={20}/> Email
                 </a>
             </div>
         </div>
@@ -31,67 +32,116 @@
         </div>
     </section>
 
-<!--    <section class="about-extended">-->
-<!--        <h2>My Philosophy</h2>-->
-<!--        <p>-->
-<!--            My guiding principle is that software is built for humans, and it should be developed with them in mind.-->
-<!--            For me, good technology should never get in the way. It should stand by people and let them do what-->
-<!--            they came to do, just easier.-->
-<!--        </p>-->
-<!--        <p>-->
-<!--            The same goes for the code base, which should be designed to make iteration and impact easy.-->
-<!--            I keep this in mind whenever I'm working on a system. Clean code and good collaboration-->
-<!--            aren't just buzzwords to me. They really make a difference for the developer and the end user.-->
-<!--        </p>-->
-<!--    </section>-->
+    <section class="content-grid">
+        <div class="main-column">
+            <section class="about-section">
+                <h2>About</h2>
+                <p>
+                    I've spent the last few years working across the stack, from frontend interfaces 
+                    to backend microservices. My approach to software is rooted in simplicity and 
+                    reliability. I believe that the best code is the code that's easiest to delete 
+                    and even easier to understand.
+                </p>
+                <p>
+                    Currently, I'm diving deeper into the Go ecosystem and experimenting with 
+                    low-level systems architecture. When I'm not behind a keyboard, you can 
+                    usually find me tinkering with my homelab or reading a good book on 
+                    engineering history.
+                </p>
+            </section>
 
-<!--    <section class="video-resume">-->
-<!--        <h2>Video Resume</h2>-->
-<!--        <div class="video-placeholder">-->
-<!--            <p>Video resume coming soon...</p>-->
-<!--            &lt;!&ndash; <video controls src="/video-resume.mp4"></video> &ndash;&gt;-->
-<!--        </div>-->
-<!--    </section>-->
+            <section class="writing-section">
+                <div class="section-header">
+                    <h2>Recent Writing</h2>
+                    <a href="#/writing" class="view-all">View all articles <ArrowRight size={14} /></a>
+                </div>
+                <ul class="article-list">
+                    <li>
+                        <span class="date">May 2026</span>
+                        <a href="#/">Building a faster Go compiler from scratch</a>
+                    </li>
+                    <li>
+                        <span class="date">April 2026</span>
+                        <a href="#/">Why I still use a terminal-based workflow</a>
+                    </li>
+                    <li>
+                        <span class="date">March 2026</span>
+                        <a href="#/">The hidden cost of micro-abstractions</a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <aside class="side-column">
+            <section class="now-section">
+                <h2>Now</h2>
+                <p class="now-subtitle">What I'm focused on at the moment.</p>
+                <ul class="now-list">
+                    <li>Working on <strong>AniMap</strong> to visualize complex series relationships.</li>
+                    <li>Learning more about <strong>distributed systems</strong> and consensus algorithms.</li>
+                    <li>Optimizing my <strong>homelab</strong> for better power efficiency.</li>
+                    <li>Reading <em>"The Soul of a New Machine"</em> by Tracy Kidder.</li>
+                </ul>
+            </section>
+
+            <section class="contact-section">
+                <h2>Get in touch</h2>
+                <p>Always open to interesting projects or just a friendly chat about tech.</p>
+                <a href="mailto:braedensmith629@gmail.com" class="accent-link">braedensmith629@gmail.com</a>
+            </section>
+        </aside>
+    </section>
 </div>
 
 <style>
     .hero {
         display: flex;
         align-items: center;
-        gap: 4rem;
-        margin-bottom: 6rem;
+        justify-content: center;
+        gap: .75rem;
+        margin-bottom: 4rem;
+        padding-bottom: 4rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .hero-content {
+        flex: 2;
     }
 
     h1 {
-        font-size: 4rem;
-        margin-bottom: 0.5rem;
+        font-size: 3rem;
+        margin-bottom: 0.25rem;
+        letter-spacing: -0.02em;
     }
 
     .role {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         color: var(--accent-color);
         font-family: var(--header-font);
         margin-bottom: 1.5rem;
+        font-style: italic;
     }
 
     .bio-short {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         color: var(--text-color);
-        max-width: 500px;
+        max-width: 600px;
         margin-bottom: 2rem;
+        line-height: 1.7;
     }
 
     .social-links {
         display: flex;
-        gap: 1.5rem;
+        gap: 2rem;
     }
 
     .social-links a {
-        color: var(--muted-color);
-        transition: color 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-color);
+        font-weight: 500;
+        font-size: 0.95rem;
     }
 
     .social-links a:hover {
@@ -108,68 +158,160 @@
         width: 100%;
         height: auto;
         aspect-ratio: 1 / 1;
-        max-width: 400px;
         object-fit: cover;
-        border-radius: 1rem;
-        box-shadow: 20px 20px 0px var(--accent-color);
-        background-color: var(--muted-color);
+        border-radius: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        filter: grayscale(20%);
     }
 
-    .about-extended {
-        margin-bottom: 6rem;
+    .content-grid {
+        display: grid;
+        grid-template-columns: 1.8fr 1fr;
+        gap: 5rem;
     }
 
-    .about-extended h2 {
-        font-size: 2.5rem;
+    h2 {
+        font-size: 1.5rem;
         margin-bottom: 1.5rem;
+        color: var(--text-color);
     }
 
-    .about-extended p {
-        font-size: 1.1rem;
-    }
-
-    .video-resume h2 {
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .video-placeholder {
-        aspect-ratio: 16 / 9;
-        background: rgba(122, 162, 247, 0.1);
-        border: 2px dashed var(--muted-color);
-        border-radius: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .about-section p {
+        font-size: 1.05rem;
+        margin-bottom: 1.25rem;
+        line-height: 1.7;
         color: var(--muted-color);
     }
 
-    @media (max-width: 800px) {
+    .writing-section {
+        margin-top: 4rem;
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 1.5rem;
+    }
+
+    .view-all {
+        font-size: 0.9rem;
+        color: var(--accent-color);
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    .article-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .article-list li {
+        margin-bottom: 1rem;
+        display: flex;
+        gap: 1.5rem;
+        align-items: baseline;
+    }
+
+    .date {
+        font-size: 0.85rem;
+        color: var(--muted-color);
+        font-family: monospace;
+        min-width: 85px;
+    }
+
+    .article-list a {
+        font-size: 1.05rem;
+        color: var(--text-color);
+        text-decoration: underline;
+        text-decoration-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .article-list a:hover {
+        text-decoration-color: var(--accent-color);
+        color: var(--accent-color);
+    }
+
+    .now-section {
+        background: #fafafa;
+        padding: 2rem;
+        border-radius: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.03);
+    }
+
+    .now-subtitle {
+        font-size: 0.9rem;
+        color: var(--muted-color);
+        margin-bottom: 1.5rem;
+        font-style: italic;
+    }
+
+    .now-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .now-list li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: var(--text-color);
+    }
+
+    .now-list li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color);
+    }
+
+    .contact-section {
+        margin-top: 4rem;
+    }
+
+    .contact-section p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        color: var(--muted-color);
+    }
+
+    .accent-link {
+        color: var(--accent-color);
+        font-weight: 600;
+        text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+        .content-grid {
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
         .hero {
             flex-direction: column-reverse;
             gap: 2rem;
             text-align: center;
-        }
-
-        .hero-content {
-            display: flex;
-            flex-direction: column;
             align-items: center;
         }
 
-        h1 {
-            font-size: 3rem;
+        .hero-content {
+            text-align: center;
         }
 
-        .portrait {
-            display: flex;
+        .bio-short {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-links {
             justify-content: center;
         }
 
         .portrait img {
-            width: 150px;
-            height: 150px;
-            box-shadow: 10px 10px 0px var(--accent-color);
+            max-height: 25vh;
         }
     }
 </style>

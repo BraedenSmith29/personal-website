@@ -1,87 +1,57 @@
 <script>
 	import { GithubLogo, Globe } from 'phosphor-svelte';
+	import { navigate } from '../lib/router.svelte.js';
+	import { projects } from '../lib/projects.js';
 
-	const projects = [
-		{
-			name: 'AniMap',
-			tech: ['Go', 'React', 'Docker', 'Cloudflare'],
-			dates: 'March 2026 - May 2026',
-			link: 'https://github.com/BraedenSmith29/animap',
-			description: 'A small web app for visualizing entire anime series at once, allowing insight into watch order, spin-off relationships, and more.',
-			points: [
-				'Built and shipped a full-stack web app leveraging third-party APIs to visualize anime series relationships.',
-				'Implemented a recursive graph-building engine to efficiently map deep relationship networks as interactive graphs.',
-				'Prevented over-fetching with smart lazy loading, improving clarity and cutting some load times by 90%+.',
-				'Ensured reliability with third-party rate-limiting, request cancellation, caching, and robust error handling.',
-				'Self-hosted on local homelab hardware using Docker and Cloudflare Tunnels for security.'
-			]
-		},
-		{
-			name: 'Dedupe: Tab Deduplicator',
-			tech: ['TypeScript', 'WebExtensions API'],
-			dates: 'February 2026 - March 2026',
-			link: 'https://github.com/BraedenSmith29/dedupe',
-			description: 'Dedupe is a browser extension that minimizes duplicate tabs, keeping you organized and saving some system resources.',
-			points: [
-				'Built and published a Firefox extension using TypeScript and the WebExtensions API, available on the Add-Ons store.',
-				'Solved browser event race conditions by designing a state machine that defers deduplication decisions until all relevant lifecycle data has been collected.',
-				'Implemented a full settings system with configurable deduplication behavior, domain whitelisting/blacklisting, pause toggling, and keyboard shortcuts.'
-			]
-		},
-		{
-			name: 'Personal Homelab Server',
-			tech: ['Ubuntu Server', 'Bash', 'Docker'],
-			dates: 'Ongoing',
-			description: 'Built and maintain a self-hosted homelab running Ubuntu Server with 15+ containerized services.',
-			points: [
-				'Architected multi-container infrastructure using Docker Compose to manage service dependencies, inter-container networking, and data persistence across the stack.',
-				'Configured and automated encrypted backups to Backblaze B2 using cron jobs with bash scripts.',
-				'Implemented security including container isolation, SSH key authentication, and least-privilege user permissions.'
-			]
-		}
-	];
+	function handleProjectClick(e, id) {
+		if (e.target.closest('a')) return; // Let links be links
+		e.preventDefault();
+		navigate(`/projects/${id}`);
+	}
 </script>
 
 <div class="container">
 	<header class="projects-header">
 		<h1>Projects</h1>
-		<p class="subtitle">A collection of things I've built, from web apps to browser extensions and infrastructure.</p>
+		<p class="subtitle">A selection of things I've built, from web apps to browser extensions and infrastructure.</p>
 	</header>
 
-	<div class="projects-grid">
+	<div class="projects-list">
 		{#each projects as project}
-			<article class="project-card">
-				<div class="project-content">
-					<div class="project-meta">
-						<span class="dates">{project.dates}</span>
-						<div class="tech-stack">
-							{#each project.tech as t}
-								<span class="tech-tag">{t}</span>
-							{/each}
-						</div>
-					</div>
-					
-					<div class="project-title-row">
-						<h2>{project.name}</h2>
+			<article class="project-item" onclick={(e) => handleProjectClick(e, project.id)}>
+				<div class="project-header-row">
+					<div class="project-title-group">
+						<a href="#/projects/{project.id}" class="title-link" onclick={(e) => handleProjectClick(e, project.id)}>
+							<h2>{project.name}</h2>
+						</a>
 						{#if project.link}
-							<a href={project.link} target="_blank" rel="noopener noreferrer" class="project-link">
+							<a href={project.link} target="_blank" rel="noopener noreferrer" class="project-link" onclick={e => e.stopPropagation()}>
 								{#if project.link.includes('github.com')}
-									<GithubLogo size={24} />
+									<GithubLogo size={18} />
+									<span>GitHub</span>
 								{:else}
-									<Globe size={24} />
+									<Globe size={18} />
+									<span>Project</span>
 								{/if}
 							</a>
 						{/if}
 					</div>
-
-					<p class="description">{project.description}</p>
-
-					<ul class="project-points">
-						{#each project.points as point}
-							<li>{point}</li>
-						{/each}
-					</ul>
+					<span class="dates">{project.dates}</span>
 				</div>
+
+				<div class="tech-stack">
+					{#each project.tech as t}
+						<span class="tech-tag">{t}</span>
+					{/each}
+				</div>
+
+				<p class="description">{project.description}</p>
+
+				<ul class="project-points">
+					{#each project.points as point}
+						<li>{point}</li>
+					{/each}
+				</ul>
 			</article>
 		{/each}
 	</div>
@@ -89,86 +59,119 @@
 
 <style>
 	.projects-header {
-		margin-bottom: 4rem;
+		margin-bottom: 2rem;
 	}
 
 	.subtitle {
-		font-size: 1.25rem;
+		font-size: 1.1rem;
 		color: var(--muted-color);
 		max-width: 600px;
+		margin-bottom: 0;
 	}
 
-	.projects-grid {
+	.projects-list {
 		display: flex;
 		flex-direction: column;
-		gap: 4rem;
+		gap: 1rem;
 	}
 
-	.project-card {
-		background: var(--card-bg);
-		border-radius: 1.5rem;
-		overflow: hidden;
-		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-		border: 1px solid rgba(122, 162, 247, 0.1);
+	.project-item {
+		border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+		padding: 1.5rem;
+		margin: 0 -1.5rem;
+		border-radius: 8px;
+		cursor: pointer;
+		transition: background-color 0.2s ease, opacity 0.2s ease;
 	}
 
-	.project-content {
-		padding: 3rem;
+	.project-item:hover {
+		background-color: rgba(0, 0, 0, 0.03);
+		opacity: 0.9;
 	}
 
-	.project-meta {
+	.project-item:last-child {
+		border-bottom: none;
+	}
+
+	.title-link {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.title-link:hover {
+		text-decoration: none;
+		color: var(--accent-color);
+	}
+
+	.title-link h2 {
+		transition: color 0.2s;
+	}
+
+	.project-header-row {
 		display: flex;
 		justify-content: space-between;
+		align-items: baseline;
+		margin-bottom: 0.5rem;
+		gap: 1rem;
+	}
+
+	.project-title-group {
+		display: flex;
 		align-items: center;
-		margin-bottom: 1.5rem;
+		gap: 0.75rem;
+	}
+
+	.project-header-row h2 {
+		margin-bottom: 0;
+		font-size: 1.5rem;
 	}
 
 	.dates {
-		font-size: 0.85rem;
+		font-size: 0.9rem;
 		color: var(--muted-color);
 		font-weight: 500;
+		white-space: nowrap;
 	}
 
 	.tech-stack {
 		display: flex;
 		gap: 0.5rem;
 		flex-wrap: wrap;
+		margin-bottom: 1rem;
 	}
 
 	.tech-tag {
 		font-size: 0.75rem;
-		background: rgba(122, 162, 247, 0.1);
-		color: var(--accent-color);
-		padding: 0.2rem 0.6rem;
-		border-radius: 0.5rem;
-		font-weight: 600;
+		color: var(--muted-color);
+		font-weight: 500;
 	}
 
-	.project-title-row {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 1.5rem;
+	.tech-tag::after {
+		content: '•';
+		margin-left: 0.5rem;
+		opacity: 0.5;
 	}
 
-	.project-title-row h2 {
-		margin-bottom: 0;
-		font-size: 2.25rem;
+	.tech-tag:last-child::after {
+		content: '';
 	}
 
 	.project-link {
-		color: var(--muted-color);
-		transition: color 0.2s;
+		color: var(--accent-color);
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-size: 0.9rem;
+		font-weight: 500;
 	}
 
 	.project-link:hover {
-		color: var(--accent-color);
+		text-decoration: underline;
 	}
 
 	.description {
-		font-size: 1.1rem;
-		font-weight: 500;
-		margin-bottom: 2rem;
+		font-size: 1rem;
+		margin-bottom: 1rem;
 		color: var(--text-color);
 	}
 
@@ -178,10 +181,11 @@
 
 	.project-points li {
 		position: relative;
-		padding-left: 1.5rem;
-		margin-bottom: 1rem;
+		padding-left: 1.25rem;
+		margin-bottom: 0.5rem;
 		color: var(--text-color);
-		opacity: 0.8;
+		font-size: 0.95rem;
+		line-height: 1.5;
 	}
 
 	.project-points li::before {
@@ -189,22 +193,17 @@
 		position: absolute;
 		left: 0;
 		color: var(--accent-color);
-		font-weight: bold;
 	}
 
 	@media (max-width: 600px) {
-		.project-content {
-			padding: 2rem;
-		}
-
-		.project-title-row h2 {
-			font-size: 1.75rem;
-		}
-
-		.project-meta {
+		.project-header-row {
 			flex-direction: column;
 			align-items: flex-start;
-			gap: 1rem;
+			gap: 0.25rem;
+		}
+
+		.project-header-row h2 {
+			font-size: 1.25rem;
 		}
 	}
 </style>
