@@ -96,9 +96,8 @@
 <style>
     .hero {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: .75rem;
+        align-items: flex-start;
+        gap: 4rem;
         margin-bottom: 4rem;
         padding-bottom: 4rem;
         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -155,9 +154,8 @@
     }
 
     .portrait img {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1 / 1;
+        width: 200px;
+        height: 200px;
         object-fit: cover;
         border-radius: 8px;
         border: 1px solid rgba(0, 0, 0, 0.1);
@@ -310,8 +308,8 @@
             justify-content: center;
         }
 
-        .portrait img {
-            max-height: 25vh;
+        .portrait {
+            justify-content: center;
         }
     }
 </style>

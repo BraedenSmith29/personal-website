@@ -1,5 +1,7 @@
 <script>
-	import { DownloadSimple, Briefcase, GraduationCap, Code } from 'phosphor-svelte';
+	import { Briefcase, GraduationCap, Code, User } from 'phosphor-svelte';
+
+	const summary = "Software Developer with 2+ years of experience shipping production web applications. Experienced across the full stack with a focus on performance, reliability, and clean system design. Passionate about building things people users love to use.";
 
 	const experience = [
 		{
@@ -43,7 +45,7 @@
 
 	const skills = {
 		languages: ['PHP', 'TypeScript/JavaScript', 'SQL', 'HTML/CSS', 'C#', 'Java', 'Go', 'C++', 'Python', 'Ruby'],
-		technologies: ['React', 'jQuery', 'SvelteKit', 'Ruby on Rails', 'Docker', 'Bash', 'Git', 'GitHub', 'GitLab', 'Azure DevOps']
+		technologies: ['React', 'jQuery', 'SvelteKit', 'Ruby on Rails', 'Docker', 'Bash', 'Git', 'GitHub', 'GitLab']
 	};
 
 	const education = {
@@ -57,19 +59,15 @@
 </script>
 
 <div class="container">
-	<header class="resume-header">
-		<h1>Resume</h1>
-		<div class="cv-downloads">
-			<a href="/resume.pdf" class="btn-download" download>
-				<DownloadSimple size={20} />
-				<span>Download CV (Pretty)</span>
-			</a>
-			<a href="/resume-ats.pdf" class="btn-download outline" download>
-				<DownloadSimple size={20} />
-				<span>Download CV (ATS Friendly)</span>
-			</a>
+	<section class="summary-section">
+		<div class="section-title">
+			<User size={24} />
+			<h2>Summary</h2>
 		</div>
-	</header>
+		<div class="summary-text">
+			<p>{summary}</p>
+		</div>
+	</section>
 
 	<section class="skills-section">
 		<div class="section-title">
@@ -101,24 +99,24 @@
 			<Briefcase size={24} />
 			<h2>Experience</h2>
 		</div>
-		<div class="timeline">
+		<div class="resume-list">
 			{#each experience as job}
-				<div class="job-card">
-					<div class="job-header">
-						<div class="job-title-company">
-							<h3>{job.title}</h3>
+				<div class="resume-item">
+					<div class="resume-item-header">
+						<div class="job-info">
+							<h3 class="job-title">{job.title}</h3>
 							<p class="company">{job.company} • {job.location}</p>
 						</div>
 						<span class="dates">{job.dates}</span>
 					</div>
 					{#if job.tech}
-						<div class="job-tech">
+						<div class="tech-stack">
 							{#each job.tech as t}
-								<span class="tech-pill">{t}</span>
+								<span class="tech-tag">{t}</span>
 							{/each}
 						</div>
 					{/if}
-					<ul class="job-points">
+					<ul class="resume-points">
 						{#each job.points as point}
 							<li>{point}</li>
 						{/each}
@@ -133,14 +131,19 @@
 			<GraduationCap size={24} />
 			<h2>Education</h2>
 		</div>
-		<div class="edu-card">
-			<div class="edu-header">
-				<h3>{education.institution}</h3>
+		<div class="resume-item">
+			<div class="resume-item-header">
+				<h3 class="institution">{education.institution}</h3>
 				<span class="dates">Graduated {education.graduated}</span>
 			</div>
 			<p class="degree">{education.degree}</p>
-			<p class="minor">Minor: {education.minor}</p>
-			<p class="gpa">GPA: {education.gpa}</p>
+			<div class="edu-meta">
+				<span>{education.minor}</span>
+				<span class="separator">•</span>
+				<span>GPA: {education.gpa}</span>
+				<span class="separator">•</span>
+				<span>{education.location}</span>
+			</div>
 		</div>
 	</section>
 </div>
@@ -180,7 +183,7 @@
 		display: flex;
 		align-items: center;
 		gap: 1rem;
-		margin-bottom: 2rem;
+		margin-bottom: 1rem;
 		color: var(--accent-color);
 	}
 
@@ -190,8 +193,15 @@
 		color: var(--text-color);
 	}
 
-	.skills-section, .experience-section, .education-section {
-		margin-bottom: 6rem;
+	.skills-section, .experience-section, .education-section, .summary-section {
+		margin-bottom: 3rem;
+	}
+
+	.summary-text {
+		font-size: 1.1rem;
+		line-height: 1.7;
+		color: var(--text-color);
+		max-width: 800px;
 	}
 
 	.skills-grid {
@@ -212,7 +222,7 @@
 	}
 
 	.tag {
-		background: rgba(0, 0, 238, 0.05);
+		background: rgba(0, 0, 0, 0.05);
 		color: var(--accent-color);
 		padding: 0.4rem 0.8rem;
 		border-radius: 2rem;
@@ -220,104 +230,116 @@
 		font-weight: 500;
 	}
 
-	.timeline {
+	.resume-list {
 		display: flex;
 		flex-direction: column;
-		gap: 3rem;
+		gap: 1rem;
 	}
 
-	.job-card {
-		border-left: 2px solid rgba(0, 0, 0, 0.1);
-		padding-left: 2rem;
+	.resume-item {
+		padding: 1.5rem;
+		margin: 0 -1.5rem;
+		transition: background-color 0.2s ease;
 		position: relative;
 	}
 
-	.job-card::before {
+	.resume-item:hover {
+		background-color: rgba(0, 0, 0, 0.03);
+		border-radius: 8px;
+	}
+
+	.resume-item:not(:last-child)::after {
 		content: '';
 		position: absolute;
-		left: -7px;
-		top: 0;
-		width: 12px;
-		height: 12px;
-		background: var(--accent-color);
-		border-radius: 50%;
+		bottom: -0.5rem;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: rgba(0, 0, 0, 0.05);
 	}
 
-	.job-header {
+	.resume-item-header {
 		display: flex;
 		justify-content: space-between;
-		align-items: flex-start;
-		margin-bottom: 1rem;
+		align-items: baseline;
+		margin-bottom: 0.5rem;
+		gap: 1rem;
 	}
 
-	.job-header h3 {
+	.job-title, .institution {
 		font-size: 1.5rem;
-		margin-bottom: 0.25rem;
+		margin-bottom: 0;
 	}
 
 	.company {
 		font-family: var(--header-font);
 		color: var(--accent-color);
 		font-weight: 500;
+		font-size: 1.1rem;
+		margin-top: 0.25rem;
+		margin-bottom: 0;
 	}
 
 	.dates {
 		font-size: 0.9rem;
 		color: var(--muted-color);
+		font-weight: 500;
 		white-space: nowrap;
 	}
 
-	.job-tech {
+	.tech-stack {
 		display: flex;
 		gap: 0.5rem;
-		margin-bottom: 1rem;
 		flex-wrap: wrap;
+		margin-bottom: 1.3rem;
 	}
 
-	.tech-pill {
+	.tech-tag {
 		font-size: 0.75rem;
-		background: var(--text-color);
-		color: var(--bg-color);
-		padding: 0.1rem 0.5rem;
-		border-radius: 0.25rem;
+		color: var(--muted-color);
+		font-weight: 500;
+		background: rgba(0, 0, 0, 0.05);
+		padding: 0.2rem 0.5rem;
+		border-radius: 4px;
 	}
 
-	.job-points {
+	.resume-points {
 		list-style: none;
 	}
 
-	.job-points li {
+	.resume-points li {
 		position: relative;
-		padding-left: 1.5rem;
-		margin-bottom: 0.75rem;
-		font-size: 1rem;
+		padding-left: 1.25rem;
+		margin-bottom: 0.5rem;
+		color: var(--text-color);
+		font-size: 0.95rem;
+		line-height: 1.5;
 	}
 
-	.job-points li::before {
-		content: '→';
+	.resume-points li::before {
+		content: '•';
 		position: absolute;
 		left: 0;
-		color: var(--accent-color);
-	}
-
-	.edu-card {
-		background: var(--card-bg);
-		padding: 2rem;
-		border-radius: 1rem;
-		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-		border: 1px solid rgba(0, 0, 0, 0.05);
-	}
-
-	.edu-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 0.5rem;
+		color: var(--muted-color);
+		opacity: 0.5;
 	}
 
 	.degree {
 		font-size: 1.1rem;
-		font-weight: 500;
+		font-weight: 600;
+		margin-bottom: 0.25rem;
+	}
+
+	.edu-meta {
+		color: var(--muted-color);
+		font-size: 0.95rem;
+		display: flex;
+		gap: 0.5rem;
+		align-items: center;
+	}
+
+	.edu-meta .separator {
+		opacity: 0.5;
 	}
 
 	@media (max-width: 800px) {
@@ -331,14 +353,19 @@
 			grid-template-columns: 1fr;
 		}
 
-		.job-header {
+		.resume-item-header {
 			flex-direction: column;
-			gap: 0.5rem;
+			align-items: flex-start;
+			gap: 0.25rem;
 		}
 
 		.cv-downloads {
 			flex-direction: column;
 			width: 100%;
+		}
+
+		.edu-meta {
+			flex-wrap: wrap;
 		}
 	}
 </style>
