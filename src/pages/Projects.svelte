@@ -4,7 +4,6 @@
 	import { projects } from '../lib/projects.js';
 
 	function handleProjectClick(e, id) {
-		if (e.target.closest('a')) return; // Let links be links
 		e.preventDefault();
 		navigate(`/projects/${id}`);
 	}
@@ -21,7 +20,7 @@
 			<article class="project-item" onclick={(e) => handleProjectClick(e, project.id)}>
 				<div class="project-header-row">
 					<div class="project-title-group">
-						<a href="#/projects/{project.id}" class="title-link" onclick={(e) => handleProjectClick(e, project.id)}>
+						<a class="title-link" onclick={(e) => handleProjectClick(e, project.id)}>
 							<h2>{project.name}</h2>
 						</a>
 						{#if project.link}

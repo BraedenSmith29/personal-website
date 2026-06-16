@@ -4,17 +4,21 @@
 	import Resume from './pages/Resume.svelte';
 	import Projects from './pages/Projects.svelte';
 	import ProjectDetail from './pages/ProjectDetail.svelte';
+	import Writings from './pages/Writings.svelte';
+	import WritingDetail from './pages/WritingDetail.svelte';
 	import { router } from './lib/router.svelte.js';
 
 	const pages = {
 		'/': Home,
 		'/resume': Resume,
-		'/projects': Projects
+		'/projects': Projects,
+		'/writings': Writings
 	};
 
 	let Page = $derived.by(() => {
 		if (pages[router.path]) return pages[router.path];
 		if (router.path.startsWith('/projects/')) return ProjectDetail;
+		if (router.path.startsWith('/writings/')) return WritingDetail;
 		return Home;
 	});
 

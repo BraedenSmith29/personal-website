@@ -1,6 +1,20 @@
 <script>
     import {GithubLogo, LinkedinLogo, EnvelopeSimple, ArrowRight} from 'phosphor-svelte';
     import Portrait from '../../static/portrait.png';
+    import { writings } from '../lib/writings.js';
+    import { navigate } from '../lib/router.svelte.js';
+
+    const recentWritings = writings.slice(0, 5);
+
+    function handleWritingClick(e, id) {
+        e.preventDefault();
+        navigate(`/writings/${id}`);
+    }
+
+    function handleViewAll(e) {
+        e.preventDefault();
+        navigate('/writings');
+    }
 </script>
 
 <div class="container">
@@ -53,21 +67,15 @@
             <section class="writing-section">
                 <div class="section-header">
                     <h2>Recent Writing</h2>
-                    <a href="#/writing" class="view-all">View all articles <ArrowRight size={14} /></a>
+                    <a href="#/writings" class="view-all" onclick={handleViewAll}>View all articles <ArrowRight size={14} /></a>
                 </div>
                 <ul class="article-list">
-                    <li>
-                        <span class="date">May 2026</span>
-                        <a href="#/">Building a faster Go compiler from scratch</a>
-                    </li>
-                    <li>
-                        <span class="date">April 2026</span>
-                        <a href="#/">Why I still use a terminal-based workflow</a>
-                    </li>
-                    <li>
-                        <span class="date">March 2026</span>
-                        <a href="#/">The hidden cost of micro-abstractions</a>
-                    </li>
+                    {#each recentWritings as entry}
+                        <li>
+                            <span class="date">{entry.date}</span>
+                            <a href="#/writings/{entry.id}" onclick={(e) => handleWritingClick(e, entry.id)}>{entry.title}</a>
+                        </li>
+                    {/each}
                 </ul>
             </section>
         </div>
@@ -203,27 +211,34 @@
     .article-list {
         list-style: none;
         padding: 0;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 0 1.5rem;
     }
 
     .article-list li {
-        margin-bottom: 1rem;
-        display: flex;
-        gap: 1.5rem;
-        align-items: baseline;
+        display: contents;
     }
 
     .date {
+        grid-column: 1;
+        margin-bottom: 1rem;
         font-size: 0.85rem;
         color: var(--muted-color);
         font-family: monospace;
-        min-width: 85px;
     }
 
     .article-list a {
+        grid-column: 2;
+        margin-bottom: 1rem;
         font-size: 1.05rem;
         color: var(--text-color);
         text-decoration: underline;
         text-decoration-color: rgba(0, 0, 0, 0.1);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
     }
 
     .article-list a:hover {
