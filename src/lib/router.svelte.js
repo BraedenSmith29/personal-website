@@ -3,19 +3,17 @@ export const router = $state({
 });
 
 function getPath() {
-	if (typeof window === 'undefined') return '/';
-	const path = window.location.hash ? window.location.hash.replace('#', '') : window.location.pathname;
-	return path || '/';
+	return window.location.pathname || '/';
 }
 
 export function navigate(path) {
-	window.location.hash = path;
+	window.history.pushState(undefined, '', path);
 	router.path = path;
 	window.scrollTo(0, 0);
 }
 
 if (typeof window !== 'undefined') {
-	window.addEventListener('hashchange', () => {
+	window.addEventListener('popstate', () => {
 		router.path = getPath();
 	});
 }

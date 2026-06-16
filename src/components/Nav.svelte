@@ -12,7 +12,10 @@
 	}
 
 	function updateIndicator() {
-		const activeEl = links[router.path];
+		let activeEl = links[router.path];
+		if (router.path.startsWith('/projects')) {
+			activeEl = links['/projects'];
+		}
 		if (activeEl) {
 			const left = activeEl.offsetLeft + activeEl.offsetWidth / 2;
 			indicatorStyle = `left: ${left}px; opacity: 1;`;
@@ -69,7 +72,7 @@
 						bind:this={links['/projects']}
 						href="#/projects" 
 						onclick={(e) => handleNav(e, '/projects')} 
-						class:active={router.path === '/projects'}
+						class:active={router.path.startsWith('/projects')}
 					>
 						Projects
 					</a>
