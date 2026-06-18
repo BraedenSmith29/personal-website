@@ -48,22 +48,6 @@
 
     <section class="content-grid">
         <div class="main-column">
-            <section class="about-section">
-                <h2>About</h2>
-                <p>
-                    I've spent the last few years working across the stack, from frontend interfaces 
-                    to backend microservices. My approach to software is rooted in simplicity and 
-                    reliability. I believe that the best code is the code that's easiest to delete 
-                    and even easier to understand.
-                </p>
-                <p>
-                    Currently, I'm diving deeper into the Go ecosystem and experimenting with 
-                    low-level systems architecture. When I'm not behind a keyboard, you can 
-                    usually find me tinkering with my homelab or reading a good book on 
-                    engineering history.
-                </p>
-            </section>
-
             <section class="writing-section">
                 <div class="section-header">
                     <h2>Recent Writing</h2>
@@ -91,12 +75,6 @@
                     <li>Reading <em>"The Soul of a New Machine"</em> by Tracy Kidder.</li>
                 </ul>
             </section>
-
-            <section class="contact-section">
-                <h2>Get in touch</h2>
-                <p>Always open to interesting projects or just a friendly chat about tech.</p>
-                <a href="mailto:braedensmith629@gmail.com" class="accent-link">braedensmith629@gmail.com</a>
-            </section>
         </aside>
     </section>
 </div>
@@ -106,8 +84,8 @@
         display: flex;
         align-items: flex-start;
         gap: 4rem;
-        margin-bottom: 4rem;
-        padding-bottom: 4rem;
+        margin-bottom: 3rem;
+        padding-bottom: 3rem;
         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
@@ -191,7 +169,7 @@
     }
 
     .writing-section {
-        margin-top: 4rem;
+        margin-top: 2rem;
     }
 
     .section-header {

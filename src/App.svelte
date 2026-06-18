@@ -6,13 +6,15 @@
 	import ProjectDetail from './pages/ProjectDetail.svelte';
 	import Writings from './pages/Writings.svelte';
 	import WritingDetail from './pages/WritingDetail.svelte';
+	import Contact from './pages/Contact.svelte';
 	import { router } from './lib/router.svelte.js';
 
 	const pages = {
 		'/': Home,
 		'/resume': Resume,
 		'/projects': Projects,
-		'/writings': Writings
+		'/writings': Writings,
+		'/contact': Contact
 	};
 
 	let Page = $derived.by(() => {

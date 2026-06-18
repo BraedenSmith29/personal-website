@@ -117,9 +117,6 @@
 		font-size: 1rem;
 		margin-bottom: 0;
 		color: var(--text-color);
-		display: -webkit-box;
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
 		overflow: hidden;
 	}
 

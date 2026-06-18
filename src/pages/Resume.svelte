@@ -1,5 +1,5 @@
 <script>
-	import { Briefcase, GraduationCap, Code, User } from 'phosphor-svelte';
+	import { Briefcase, GraduationCap, Code, User, FilePdf } from 'phosphor-svelte';
 
 	const summary = "Software Developer with 2+ years of experience shipping production web applications. Experienced across the full stack with a focus on performance, reliability, and clean system design. Passionate about building things people users love to use.";
 
@@ -59,6 +59,19 @@
 </script>
 
 <div class="container">
+	<header class="resume-header">
+		<div class="header-content">
+			<h1>Resume</h1>
+			<p class="subtitle">A brief overview of my professional experience and skills.</p>
+		</div>
+		<div class="cv-downloads">
+			<a href="/Resume.pdf" target="_blank" class="btn-download">
+				<FilePdf size={20} />
+				View PDF
+			</a>
+		</div>
+	</header>
+
 	<section class="summary-section">
 		<div class="section-title">
 			<User size={24} />
@@ -156,13 +169,25 @@
 		margin-bottom: 4rem;
 	}
 
+	.header-content h1 {
+		font-size: 3.5rem;
+		margin-bottom: 0.5rem;
+		line-height: 1;
+	}
+
+	.subtitle {
+		font-size: 1.25rem;
+		color: var(--muted-color);
+		margin: 0;
+	}
+
 	.cv-downloads {
 		display: flex;
 		gap: 1rem;
 	}
 
 	.btn-download {
-		display: flex;
+		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
 		background: var(--accent-color);
@@ -171,6 +196,14 @@
 		border-radius: 0.5rem;
 		font-weight: 500;
 		font-size: 0.9rem;
+		text-decoration: none;
+		transition: opacity 0.2s ease;
+	}
+
+	.btn-download:hover {
+		opacity: 0.9;
+		color: white;
+		text-decoration: none;
 	}
 
 	.btn-download.outline {

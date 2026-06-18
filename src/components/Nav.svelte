@@ -19,6 +19,9 @@
 		if (router.path.startsWith('/writings')) {
 			activeEl = links['/writings'];
 		}
+		if (router.path === '/contact') {
+			activeEl = links['/contact'];
+		}
 		if (activeEl) {
 			const left = activeEl.offsetLeft + activeEl.offsetWidth / 2;
 			indicatorStyle = `left: ${left}px; opacity: 1;`;
@@ -90,6 +93,16 @@
 						Writings
 					</a>
 				</li>
+				<li>
+					<a 
+						bind:this={links['/contact']}
+						href="#/contact" 
+						onclick={(e) => handleNav(e, '/contact')} 
+						class:active={router.path === '/contact'}
+					>
+						Contact
+					</a>
+				</li>
 			</ul>
 		</div>
 
@@ -101,10 +114,9 @@
 
 <style>
 	nav {
-		padding: 2rem 0;
+		padding: 1rem 0;
 		background: rgba(255, 255, 255, 0.95);
 		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
 		z-index: 100;
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	}
@@ -133,7 +145,7 @@
 	.name {
 		font-family: var(--header-font);
 		font-weight: 800;
-		font-size: 1.5rem;
+		font-size: 2rem;
 		color: var(--text-color);
 		letter-spacing: -0.02em;
 	}
@@ -191,7 +203,8 @@
 		}
 
 		nav {
-			padding: 1.5rem 0;
+			padding-top: 1rem;
+			padding-bottom: .5rem
 		}
 	}
 
@@ -199,7 +212,7 @@
 		.nav-content {
 			display: flex;
 			flex-direction: column;
-			gap: 1.5rem;
+			gap: 0;
 			text-align: center;
 		}
 
@@ -213,7 +226,6 @@
 		}
 
 		.name {
-			font-size: 1.25rem;
 		}
 	}
 </style>
