@@ -143,7 +143,7 @@
 	}
 
 	.name {
-		font-family: var(--header-font);
+		font-family: 'Zodiak', serif;
 		font-weight: 800;
 		font-size: 2rem;
 		color: var(--text-color);
@@ -221,7 +221,7 @@
 		}
 		
 		.links {
-			gap: 1.5rem;
+			gap: .75rem;
 			padding: 0.4rem 1rem;
 		}
 
