@@ -44,8 +44,31 @@
 	];
 
 	const skills = {
-		languages: ['PHP', 'TypeScript/JavaScript', 'SQL', 'HTML/CSS', 'C#', 'Java', 'Go', 'C++', 'Python', 'Ruby'],
-		technologies: ['React', 'jQuery', 'SvelteKit', 'Ruby on Rails', 'Docker', 'Bash', 'Git', 'GitHub', 'GitLab']
+		languages: [
+			{ name: 'PHP', icon: 'php' },
+			{ name: 'TypeScript', icon: 'typescript' },
+			{ name: 'JavaScript', icon: 'javascript' },
+			{ name: 'SQL', icon: 'sqlite' },
+			{ name: 'HTML5', icon: 'html5' },
+			{ name: 'CSS3', icon: 'css3' },
+			{ name: 'C#', icon: 'dotnet' },
+			{ name: 'Java', icon: 'openjdk' },
+			{ name: 'Go', icon: 'go' },
+			{ name: 'C++', icon: 'cplusplus' },
+			{ name: 'Python', icon: 'python' },
+			{ name: 'Ruby', icon: 'ruby' }
+		],
+		technologies: [
+			{ name: 'React', icon: 'react' },
+			{ name: 'jQuery', icon: 'jquery' },
+			{ name: 'Svelte', icon: 'svelte' },
+			{ name: 'Ruby on Rails', icon: 'rubyonrails' },
+			{ name: 'Docker', icon: 'docker' },
+			{ name: 'Bash', icon: 'gnubash' },
+			{ name: 'Git', icon: 'git' },
+			{ name: 'GitHub', icon: 'github' },
+			{ name: 'GitLab', icon: 'gitlab' }
+		]
 	};
 
 	const education = {
@@ -92,7 +115,14 @@
 				<h3>Languages</h3>
 				<div class="tags">
 					{#each skills.languages as lang}
-						<span class="tag">{lang}</span>
+						<span class="tag">
+							<span 
+								class="skill-icon" 
+								style="--icon-url: url('https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/{lang.icon}.svg')"
+								aria-hidden="true"
+							></span>
+							{lang.name}
+						</span>
 					{/each}
 				</div>
 			</div>
@@ -100,7 +130,14 @@
 				<h3>Technologies</h3>
 				<div class="tags">
 					{#each skills.technologies as tech}
-						<span class="tag">{tech}</span>
+						<span class="tag">
+							<span 
+								class="skill-icon" 
+								style="--icon-url: url('https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/{tech.icon}.svg')"
+								aria-hidden="true"
+							></span>
+							{tech.name}
+						</span>
 					{/each}
 				</div>
 			</div>
@@ -261,6 +298,23 @@
 		border-radius: 2rem;
 		font-size: 0.85rem;
 		font-weight: 500;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.skill-icon {
+		width: 1rem;
+		height: 1rem;
+		background-color: currentColor;
+		-webkit-mask-image: var(--icon-url);
+		mask-image: var(--icon-url);
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+		-webkit-mask-size: contain;
+		mask-size: contain;
+		display: inline-block;
+		opacity: 0.9;
 	}
 
 	.resume-list {
