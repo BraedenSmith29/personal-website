@@ -35,15 +35,4 @@
 
 
 <style>
-	main {
-		min-height: calc(100vh - 160px);
-	}
-
-	footer {
-		text-align: center;
-		padding: 4rem 0;
-		font-size: 0.9rem;
-		color: var(--muted-color);
-		border-top: 1px solid rgba(122, 162, 247, 0.1);
-	}
 </style>

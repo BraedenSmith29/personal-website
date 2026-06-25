@@ -88,7 +88,6 @@
                     <li>Working on <strong>AniMap</strong> to visualize complex series relationships.</li>
                     <li>Learning more about <strong>distributed systems</strong> and consensus algorithms.</li>
                     <li>Optimizing my <strong>homelab</strong> for better power efficiency.</li>
-                    <li>Reading <em>"The Soul of a New Machine"</em> by Tracy Kidder.</li>
                 </ul>
             </section>
 
