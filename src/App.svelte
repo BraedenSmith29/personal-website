@@ -1,12 +1,22 @@
-<script>
-  import LinkButton from './components/LinkButton.svelte';
-  import Resume from '.././static/Resume.pdf';
+<script lang="ts">
+	import Nav from './components/Nav.svelte';
+	import Home from './pages/Home.svelte';
+	import Contact from './pages/Contact.svelte';
+	import { router } from './lib/router.svelte';
+
+	let Page = $derived.by(() => {
+		if (router.path.startsWith('/contact')) {
+			return Contact;
+		} else {
+			return Home;
+		}
+	});
+
+	$inspect(router.path)
 </script>
 
+<Nav />
+
 <main>
-  <h1 class="header-text">👋 Hey, I'm <span class="fancy-name">Braeden</span>!</h1>
-  <p class="body-text">One day, this website may be cooler. Until then, here are some links!</p>
-  <LinkButton href="https://github.com/braedensmith29">GitHub</LinkButton>
-  <LinkButton href="https://linkedin.com/in/braedensmith29/">LinkedIn</LinkButton>
-  <LinkButton href="{Resume}">Resume</LinkButton>
+	<Page />
 </main>
